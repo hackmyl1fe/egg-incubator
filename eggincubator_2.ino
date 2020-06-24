@@ -75,9 +75,6 @@ int resolution = 11 ;  // for more precission put 12
 //Use servo instead of motors to turn eggs
 #include <Servo.h> 
 Servo egg_servo;
-egg_servo.attach(5,540,2400);
-egg_servo.write(90);
-//delay(99999); //Used to calibrate the servo for initial install
 
 byte motordr = 0 ; //Motor direction used mith dcmotor and hbridge l293d
 
@@ -179,8 +176,8 @@ sensors.begin();
 // define outputs
  pinMode(temppeste, OUTPUT);  
  pinMode(umidpeste, OUTPUT);
- pinMode(motoras, OUTPUT);
- pinMode(motoras1, OUTPUT);
+ /*pinMode(motoras, OUTPUT);
+ pinMode(motoras1, OUTPUT);*/
  pinMode(eroarepin, OUTPUT);
  pinMode(buzzer, OUTPUT);
  
@@ -190,6 +187,9 @@ sensors.begin();
   digitalWrite(umidpeste, LOW);
   /*digitalWrite(motoras, LOW);
   digitalWrite(motoras1, LOW);*/
+  egg_servo.attach(5,540,2400);
+  egg_servo.write(90);
+  //delay(99999); //Used to calibrate the servo for initial install
   egg_servo.write(0); //Set egg servo to low
   digitalWrite(eroarepin, LOW);
 
@@ -526,8 +526,8 @@ while (((millis() - sfrotatii) > taim11) && (rotit == 0))
   lcd.print(" Turning EGGs!  ");
   if (motordr%2 == 0) {
     //Move the servo slowly
-    for (pos = 0; pos >= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-      myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    for (int pos = 0; pos >= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+      egg_servo.write(pos);              // tell servo to go to position in variable 'pos'
       delay(15);                       // waits 15ms for the servo to reach the position
     }
     //egg_servo.write(180); //Set servo to high
@@ -536,15 +536,15 @@ while (((millis() - sfrotatii) > taim11) && (rotit == 0))
   } 
    if (motordr%2 == 1) {
       //Move the servo slowly
-      for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-        myservo.write(pos);              // tell servo to go to position in variable 'pos'
+      for (int pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+        egg_servo.write(pos);              // tell servo to go to position in variable 'pos'
         delay(15);                       // waits 15ms for the servo to reach the position
       }
       //egg_servo.write(0); //Set servo to high
       /*digitalWrite(motoras, LOW); 
      digitalWrite(motoras1, HIGH);*/
   } 
-  delay(taim22);
+  //delay(taim22);
   //digitalWrite(motoras, LOW); 
   //digitalWrite(motoras1, LOW); 
   rotit = 1;
