@@ -21,5 +21,6 @@ V2.1
 
 
 Updated Diagram to use Basic Pezio Buzzer
+
 ![ver2.1](https://i.ibb.co/Zxzh6V9/egg-diagram.png)
 
