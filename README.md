@@ -13,8 +13,11 @@ full article: http://nicuflorica.blogspot.ro/2017/05/sistem-de-automatizare-incu
 
 
 V2.1
+
 -Used a pezio speaker instead of actual speaker
+
 -Using Servo to rotate the eggs instead of motor
+
 
 
 Updated Diagram to use Basic Pezio Buzzer
