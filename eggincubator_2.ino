@@ -67,6 +67,9 @@ int resolution = 11 ;  // for more precission put 12
 // define pins for relay or leds
 #define temppeste A1
 #define umidpeste A2
+#define egg_servo_pin 5
+#define servo_min 540
+#define servo_max 2400
 /*#define motoras 5
 #define motoras1 4*/
 #define eroarepin 13
@@ -187,7 +190,7 @@ sensors.begin();
   digitalWrite(umidpeste, LOW);
   /*digitalWrite(motoras, LOW);
   digitalWrite(motoras1, LOW);*/
-  egg_servo.attach(5,540,2400);
+  egg_servo.attach(egg_servo_pin,servo_min,servo_max);
   egg_servo.write(90);
   //delay(99999); //Used to calibrate the servo for initial install
   egg_servo.write(0); //Set egg servo to low
